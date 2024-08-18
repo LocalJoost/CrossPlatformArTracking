@@ -4,13 +4,14 @@ using System.Linq;
 using RealityCollective.ServiceFramework.Services;
 using ServiceFrameworkExtensions.MarkerTracking;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MarkerTrackingDemo
 {
     public class PerMarkerVisualizer: MonoBehaviour
     {
         [SerializeField]
-        private List<MarkerConfig> markerData;
+        private List<MarkerConfig> markerConfiguration;
         
         private IMarkerTrackingService trackingService;
         private readonly Dictionary<string, GameObject> markers = new();
@@ -24,7 +25,13 @@ namespace MarkerTrackingDemo
         
         private void OnMarkersChanged(ITrackedMarkerChangedEventArgs args)
         {
-            foreach(var marker in args.Markers.Where(p=> p.IsTracked))
+            AddOrUpdateTrackedMarkers(args.Markers.Where(t => t.IsTracked));
+            RemoveUntrackedMarkers(args.Markers.Where(t => !t.IsTracked));
+        }
+        
+        private void AddOrUpdateTrackedMarkers(IEnumerable<ITrackedMarker> trackedMarkers)
+        {
+            foreach(var marker in trackedMarkers)
             {
                 var markerConfig = GetMarkerConfigForPayload(marker.Payload);
                 if( markerConfig == null)
@@ -34,7 +41,6 @@ namespace MarkerTrackingDemo
                 if (!markers.TryGetValue(marker.Id, out var go))
                 {
                     go = Instantiate(markerConfig.Prefab, marker.Pose.position, marker.Pose.rotation);
-     
                     go.GetComponent<AnnotationController>().SetText(marker.Payload);
                     markers.Add(marker.Id, go);
                 }
@@ -49,8 +55,11 @@ namespace MarkerTrackingDemo
                     ScaleMarker(go, marker.Size);
                 }
             }
-
-            foreach(var marker in args.Markers.Where(p=> !p.IsTracked))
+        }
+        
+        private void RemoveUntrackedMarkers(IEnumerable<ITrackedMarker>untrackedMarkers)
+        {
+            foreach (var marker in untrackedMarkers)
             {
                 if (markers.ContainsKey(marker.Id))
                 {
@@ -62,7 +71,7 @@ namespace MarkerTrackingDemo
         
         private MarkerConfig GetMarkerConfigForPayload(string payload)
         {
-            return markerData.FirstOrDefault(p => p.PayLoad == payload);
+            return markerConfiguration.FirstOrDefault(p => p.PayLoad == payload);
         }
         
         private void ScaleMarker(GameObject marker, Vector2 size)

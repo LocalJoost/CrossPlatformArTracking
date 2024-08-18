@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace MarkerTrackingDemo
 {
-    public class MarkerVisualizer : MonoBehaviour
+    public class SimpleMarkerVisualizer : MonoBehaviour
     {
         [SerializeField]
-        private GameObject markerPrefab; 
-        
+        private GameObject markerPrefab;
+
         private IMarkerTrackingService trackingService;
         private readonly Dictionary<string, GameObject> markers = new();
 
@@ -21,26 +21,36 @@ namespace MarkerTrackingDemo
             trackingService = ServiceManager.Instance.GetService<IMarkerTrackingService>();
             trackingService.MarkersChanged += OnMarkersChanged;
         }
-        
+
         private void OnMarkersChanged(ITrackedMarkerChangedEventArgs args)
         {
-            foreach(var marker in args.Markers.Where(p=> p.IsTracked))
+            AddOrUpdateTrackedMarkers(args.Markers.Where(t => t.IsTracked));
+            RemoveUntrackedMarkers(args.Markers.Where(t => !t.IsTracked));
+        }
+
+        private void AddOrUpdateTrackedMarkers(IEnumerable<ITrackedMarker> trackedMarkers)
+        {
+            foreach (var marker in trackedMarkers)
             {
-                if (!markers.TryGetValue(marker.Id, out var go))
+                if (!markers.TryGetValue(marker.Id, out var markerGameObject))
                 {
-                    go = Instantiate(markerPrefab, marker.Pose.position, marker.Pose.rotation);
-                    go.GetComponent<AnnotationController>().SetText(marker.Payload);
-                    markers.Add(marker.Id, go);
+                    markerGameObject = Instantiate(markerPrefab, marker.Pose.position, marker.Pose.rotation);
+                    markerGameObject.GetComponent<AnnotationController>().SetText(marker.Payload);
+                    markers.Add(marker.Id, markerGameObject);
                 }
                 else
                 {
-                    go.transform.position = marker.Pose.position;
-                    go.transform.rotation = marker.Pose.rotation;
+                    markerGameObject.transform.position = marker.Pose.position;
+                    markerGameObject.transform.rotation = marker.Pose.rotation;
                 }
-                ScaleMarker(go, marker.Size);
+                
+                ScaleMarker(markerGameObject, marker.Size);
             }
+        }
 
-            foreach(var marker in args.Markers.Where(p=> !p.IsTracked))
+        private void RemoveUntrackedMarkers(IEnumerable<ITrackedMarker>untrackedMarkers)
+        {
+            foreach (var marker in untrackedMarkers)
             {
                 if (markers.ContainsKey(marker.Id))
                 {
@@ -52,10 +62,10 @@ namespace MarkerTrackingDemo
         
         private void ScaleMarker(GameObject marker, Vector2 size)
         {
-            var scaleFactor = (float)Math.Sqrt(size.x * size.y);
+            var scaleFactor = Mathf.Sqrt(size.x * size.y);
             marker.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
         }
-        
+
         private void OnDestroy()
         {
             trackingService.MarkersChanged -= OnMarkersChanged;

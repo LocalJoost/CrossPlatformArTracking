@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Application/Scenes/DifferentMarkersDemo.unity
-    guid: 34f64d795b3c02741bb74d6494ec47b0
+    path: Assets/Application/Scenes/SimpleMarkerDemo.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 5cd178a45c9d51e479d74682a630c814, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 4f96649612687d049b429d0486df3f0c, type: 2}

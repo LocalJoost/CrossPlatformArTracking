@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
+#if MAGICLEAP
 using MagicLeap.OpenXR.Features.MarkerUnderstanding;
+#endif
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.OpenXR;
