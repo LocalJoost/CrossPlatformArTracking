@@ -20,9 +20,9 @@
   ],
   "dependencies": {
     "com.atteneder.ktx": "https://github.com/atteneder/KtxUnity.git#v2.1.2",
-    "com.magicleap.mrtk3": "1.1.0",
+    "com.magicleap.mrtk3": "1.2.0",
     "com.magicleap.soundfield": "3.4.7-240612.126253.9a13d23",
-    "com.magicleap.unitysdk": "2.3.0",
+    "com.magicleap.unitysdk": "2.5.0-pre.R14.240821.127115.fb54a58",
     "com.microsoft.mixedreality.openxr": "file:MixedReality/com.microsoft.mixedreality.openxr-1.10.1.tgz",
     "com.microsoft.mrtk.graphicstools.unity": "file:MixedReality/com.microsoft.mrtk.graphicstools.unity-0.7.0.tgz",
     "com.microsoft.mrtk.tts.windows": "file:MixedReality/com.microsoft.mrtk.tts.windows-1.0.1.tgz",

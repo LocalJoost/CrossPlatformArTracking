@@ -36,7 +36,10 @@ namespace ServiceFrameworkExtensions.MarkerTracking
 
         public override void Disable()
         {
-            arMarkerManager.markersChanged -= OnMarkersChanged;
+            if(arMarkerManager != null)
+            {
+                arMarkerManager.markersChanged -= OnMarkersChanged;
+            }
         }
 
         public override void Destroy()

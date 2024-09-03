@@ -140,12 +140,12 @@ MonoBehaviour:
   company: Magic Leap
   priority: 0
   required: 0
+  defaultBlendModeSelection: 2
   FocusDistance: 0
   UseProtectedSurface: 0
   UseVignetteMode: 0
   GlobalDimmerEnabled: 0
   GlobalDimmerValue: 0
-  BlendMode: 2
 --- !u!114 &-7695405255811856818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,15 +375,18 @@ MonoBehaviour:
   - {fileID: 2113397068387020813}
   - {fileID: -2507463937482846859}
   - {fileID: -744377316524413126}
+  - {fileID: 2923070819189569551}
   - {fileID: 4463407454113658693}
   - {fileID: -5985462401240477074}
   - {fileID: 4317686769134546820}
   - {fileID: 1991650019332174591}
   - {fileID: -3892682869894441518}
   - {fileID: -8823773791168374050}
+  - {fileID: -394996027473918467}
   - {fileID: -8480471891650112030}
   - {fileID: 3081534307107276572}
   - {fileID: -1791387640059972085}
+  - {fileID: 8790185336131624433}
   - {fileID: 3771329195580687807}
   - {fileID: 9120936162030834327}
   - {fileID: -1794886675658496719}
@@ -486,6 +489,26 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &-5014395702672467904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78dd111ab9872144c9ea2d30e138bec4, type: 3}
+  m_Name: MagicLeapEyeTrackerFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Eye Tracker
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_eyetracker
+  openxrExtensionStrings: XR_ML_eye_tracker
+  company: Magic Leap
+  priority: -1
+  required: 0
 --- !u!114 &-4818593150992761815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +527,26 @@ MonoBehaviour:
   featureIdInternal: com.unity.openxr.feature.input.palmpose
   openxrExtensionStrings: XR_EXT_palm_pose
   company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &-4623249180654403018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ae4f5c3c8c48c281129f06fbf60316, type: 3}
+  m_Name: MagicLeapReprojectionFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Reprojection
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_reprojection
+  openxrExtensionStrings: XR_MSFT_composition_layer_reprojection
+  company: Magic Leap
   priority: 0
   required: 0
 --- !u!114 &-4476319831029559185
@@ -549,16 +592,19 @@ MonoBehaviour:
   - {fileID: 8936359062407123420}
   - {fileID: 3487043750187035058}
   - {fileID: 9071199105169366899}
+  - {fileID: -5014395702672467904}
   - {fileID: 6121604923558079227}
   - {fileID: 5566300247040959456}
   - {fileID: -8995860491864924619}
   - {fileID: -941081781717308313}
   - {fileID: -797352929839536897}
   - {fileID: 7005611432129936451}
+  - {fileID: 7950490120777972861}
   - {fileID: -5373955617152889746}
   - {fileID: -6414497969729984360}
   - {fileID: -3435665399196187553}
   - {fileID: -8267567822226559847}
+  - {fileID: -4623249180654403018}
   - {fileID: -2308018644824885985}
   - {fileID: 5610871315218769104}
   - {fileID: 1844859881670138351}
@@ -1079,6 +1125,26 @@ MonoBehaviour:
   company: Magic Leap
   priority: 0
   required: 0
+--- !u!114 &-394996027473918467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd2e160e79e4358a71fa4a1592da582, type: 3}
+  m_Name: MagicLeapPhysicalOcclusionFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Physical Occlusion
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_physical_occlusion
+  openxrExtensionStrings: XR_ML_physical_world_occlusion
+  company: Magic Leap
+  priority: 0
+  required: 0
 --- !u!114 &-359407500515792535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1497,26 @@ MonoBehaviour:
   openxrExtensionStrings: XR_MSFT_controller_model XR_FB_render_model
   company: Microsoft
   priority: 0
+  required: 0
+--- !u!114 &2923070819189569551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78dd111ab9872144c9ea2d30e138bec4, type: 3}
+  m_Name: MagicLeapEyeTrackerFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Eye Tracker
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_eyetracker
+  openxrExtensionStrings: XR_ML_eye_tracker
+  company: Magic Leap
+  priority: -1
   required: 0
 --- !u!114 &2944243050911316620
 MonoBehaviour:
@@ -2084,6 +2170,26 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &7950490120777972861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd2e160e79e4358a71fa4a1592da582, type: 3}
+  m_Name: MagicLeapPhysicalOcclusionFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Physical Occlusion
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_physical_occlusion
+  openxrExtensionStrings: XR_ML_physical_world_occlusion
+  company: Magic Leap
+  priority: 0
+  required: 0
 --- !u!114 &8044177401724736378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,6 +2248,26 @@ MonoBehaviour:
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
   openxrExtensionStrings: 
   company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &8790185336131624433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ae4f5c3c8c48c281129f06fbf60316, type: 3}
+  m_Name: MagicLeapReprojectionFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Reprojection
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_reprojection
+  openxrExtensionStrings: XR_MSFT_composition_layer_reprojection
+  company: Magic Leap
   priority: 0
   required: 0
 --- !u!114 &8903088431518466315

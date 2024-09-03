@@ -17,7 +17,6 @@ namespace ServiceFrameworkExtensions.MarkerTracking
         }
 
 #if MAGICLEAP
-
         private MagicLeapMarkerUnderstandingFeature markerFeature;
         private bool isInitialized;
         private XROrigin xrOrigin;
@@ -71,7 +70,6 @@ namespace ServiceFrameworkExtensions.MarkerTracking
             }
 
             var shouldNotify = false;
-            base.Update();
             markerFeature.UpdateMarkerDetectors();
 
             foreach (var detector in markerFeature.MarkerDetectors)
@@ -85,6 +83,10 @@ namespace ServiceFrameworkExtensions.MarkerTracking
             if (shouldNotify)
             {
                 NotifyMarkersChanged(CreateMarkerArgs());
+            }
+            else
+            {
+                base.Update();
             }
         }
 

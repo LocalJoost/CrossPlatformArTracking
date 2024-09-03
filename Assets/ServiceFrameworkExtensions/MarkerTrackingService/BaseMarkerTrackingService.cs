@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace ServiceFrameworkExtensions.MarkerTracking
 {
-    public class BaseMarkerTrackingService : BaseServiceWithConstructor
+    public abstract class BaseMarkerTrackingService : BaseServiceWithConstructor
     {
         protected readonly TrackedMarkerServiceProfile Profile;
         protected readonly Dictionary<string, TrackedMarker> KnownMarkers = new();
-        protected float LastEventUpdate;
+        protected float LastEventUpdate = -2f;
 
         public event Action<ITrackedMarkerChangedEventArgs> MarkersChanged;
         
@@ -30,6 +30,7 @@ namespace ServiceFrameworkExtensions.MarkerTracking
         protected void NotifyMarkersChanged(TrackedMarkerArgs args)
         {
             MarkersChanged?.Invoke(args);
+            LastEventUpdate = Time.time;
         }
         
         protected TrackedMarkerArgs CreateMarkerArgs()
