@@ -9,7 +9,7 @@ namespace ServiceFrameworkExtensions.MarkerTracking
     {
         protected readonly TrackedMarkerServiceProfile Profile;
         protected readonly Dictionary<string, TrackedMarker> KnownMarkers = new();
-        protected float LastEventUpdate = -2f;
+        protected float LastEventUpdate;
 
         public event Action<ITrackedMarkerChangedEventArgs> MarkersChanged;
         
@@ -17,6 +17,7 @@ namespace ServiceFrameworkExtensions.MarkerTracking
             : base(name, priority)
         {
             Profile = profile;
+            LastEventUpdate = -profile.TrackingLostTimeOut;
         }
         
         public override void Update()

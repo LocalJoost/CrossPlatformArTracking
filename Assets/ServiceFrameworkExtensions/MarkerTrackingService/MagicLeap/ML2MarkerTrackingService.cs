@@ -138,11 +138,6 @@ namespace ServiceFrameworkExtensions.MarkerTracking
 
         private void UpdateMarker(MarkerData markerData, TrackedMarker trackedMarker)
         {
-            if (!markerData.MarkerPose.HasValue)
-            {
-                return;
-            }
-
             var originTransform = xrOrigin.CameraFloorOffsetObject.transform;
 
             trackedMarker.Pose = new Pose(
@@ -162,7 +157,6 @@ namespace ServiceFrameworkExtensions.MarkerTracking
                 _ => null
             };
         }
-
 #endif
     }
 }
